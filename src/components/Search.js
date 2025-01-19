@@ -1,15 +1,21 @@
 import React from 'react'
+import { useTheme } from '@mui/material/styles';
+import useMediaQuery from '@mui/material/useMediaQuery';
 import './Search.css'
 
 export default function Search() {
+    const theme = useTheme();
+    const mobile = useMediaQuery(theme.breakpoints.up('md'));
+
     const containerDiv = {
-        height: "330px",
+        minHeight: "330px",
         background: "linear-gradient(96.22deg, #FFA229 9%, #1C4670 59.37%)"
     }
     const searchDiv = {
         paddingTop: "64px",
         paddingLeft: "112px",
         paddingRight: "112px",
+        paddingBottom: "64px",
         gap: "32px",
         opacity: "0px",
         alignItems: "center",
@@ -41,7 +47,7 @@ export default function Search() {
                 }}>
                     1% OF THE INDUSTRY
                 </text>
-                <text style={{ text2Style, fontSize: "32px", fontWeight: "700", }}>
+                <text style={{ text2Style, fontSize: "32px", fontWeight: "700" }}>
                     Welcome to your new digital reality. Now.
                 </text>
                 <div style={{ display: "flex", flexDirection: "row", maxWidth: "512px", width: "100%", background: "#FFFFFF", borderRadius: "6px", }}>
@@ -54,7 +60,7 @@ export default function Search() {
                     height: "Hug(24px)px",
                     gap: "24px",
                     display: "flex",
-                    flexDirection: "row",
+                    flexDirection: mobile ? "row" : "column",
                 }}>
                     <div style={{ display: "flex", flexDirection: "row", gap: "16px", alignItems: "center", justifyContent: "center" }}>
                         <input type="checkbox" className="circle-checkbox" />

@@ -1,11 +1,17 @@
 import React from 'react'
+import { useTheme } from '@mui/material/styles';
+import useMediaQuery from '@mui/material/useMediaQuery';
 
 export default function Numbers() {
+    const theme = useTheme();
+    const mobile = useMediaQuery(theme.breakpoints.up('md'));
+    const tablet = useMediaQuery(theme.breakpoints.up('lg'));
+
     const containerDivStyle = {
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
-        height: '334px',
+        minHeight: '334px',
     }
     const textStyle = {
         fontSize: "14px",
@@ -18,7 +24,6 @@ export default function Numbers() {
         color: "#EB8D15"
     }
     const textStyle2 = {
-        // fontFamily: "Inter",
         fontSize: "32px",
         fontWeight: "700",
         lineHeight: "38.4px",
@@ -57,12 +62,13 @@ export default function Numbers() {
         textUnderlinePosition: "from-font",
         textDecorationSkipInk: "none",
     }
+
     return (
         <div style={containerDivStyle}>
             <div style={{ display: 'flex', flexDirection: 'column', marginTop: "49px" }}>
                 <text style={textStyle}>WHY REGISTER KARO</text>
                 <text style={textStyle2}>Some Numbers are important</text>
-                <div style={{ display: 'flex', flexDirection: 'row', gap: '150px', marginTop: '54.39px' }}>
+                <div style={{ display: 'flex', flexDirection: mobile ? 'row' : 'column', gap: tablet ? '100px' : '20px', marginTop: '54.39px', marginBottom: '54.39px' }}>
                     <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
                         <div><text style={numberStyle}>1M</text><text style={numberStylePlus}>+</text></div>
                         <text style={numberHeadingStyle}>CUSTOMERS</text>
